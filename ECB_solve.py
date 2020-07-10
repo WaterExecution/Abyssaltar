@@ -14,8 +14,8 @@ def run(command):
     )
     return process.communicate()[0]
 
-estimateCharacter = 100               # guess flag size ignore if flag size is smaller than 100
-blockSize = 16                        # change to block size of encryption !!!IMPORTANT!!!
+estimateCharacter = 100                 # guess flag size ignore if flag size is smaller than 100
+blockSize = 16                          # change to block size of encryption !!!IMPORTANT!!!
 guesses = "_ABCDEFGHIJKLMNOPQRSTUVWXYZ" # possible characters in flag
 found = ""
 flag = ""
@@ -23,12 +23,12 @@ flag = ""
 for i in range(1, estimateCharacter):
  block1="A"*blockSize
  block2="A"*blockSize
- # X is just padding to fill in the 16 blockSize 
- # AAAABBBBCCCCDDDD AAAABBBBCCCCDDDD FLAGXXXXXXXXXXXX // hash{block1} = hash{block2} 
- # AAAABBBBCCCCDDD? AAAABBBBCCCCDDDF LAGXXXXXXXXXXXXX // Guess ? in order to get hash{block1} = hash{block2} 
- 
- # SUPERDUPERLONGFL AAAABBBBCCCCDDDD SUPERDUPERLONGFL AGXXXXXXXXXXXXX  // when flag is longer than 16
- # UPERDUPERLONGFL? AAAABBBBCCCCDDDS UPERDUPERLONGFLA GXXXXXXXXXXXXXX
+                                        # X is just padding to fill in the 16 blockSize 
+                                        # AAAABBBBCCCCDDDD AAAABBBBCCCCDDDD FLAGXXXXXXXXXXXX // hash{block1} = hash{block2} 
+                                        # AAAABBBBCCCCDDD? AAAABBBBCCCCDDDF LAGXXXXXXXXXXXXX // Guess ? in order to get hash{block1} = hash{block2} 
+
+                                        # SUPERDUPERLONGFL AAAABBBBCCCCDDDD SUPERDUPERLONGFL AGXXXXXXXXXXXXX  // when flag is longer than 16
+                                        # UPERDUPERLONGFL? AAAABBBBCCCCDDDS UPERDUPERLONGFLA GXXXXXXXXXXXXXX
  
  if len(flag) >= blockSize:  
   block1 = flag[-blockSize+1:]
@@ -40,7 +40,7 @@ for i in range(1, estimateCharacter):
   if len(flag) >= blockSize:
    guessBlock = block1 + char + block2
   else:
-   guessBlock = block1 + found + char + block2 # AAAABBBBCCCCDDF? AAAABBBBCCCCDDFL // Adds previously found to block1
+   guessBlock = block1 + found + char + block2                  # AAAABBBBCCCCDDF? AAAABBBBCCCCDDFL // Adds previously found to block1
   b64cipher = str(run("python3 server.py " + guessBlock))[2:-3] # local file
                                                                 # p = remote("137.137.137.137","1337")
                                                                 # p.send("guessBlock")

